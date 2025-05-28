@@ -1,0 +1,111 @@
+{% extends 'admin_dash/base_template.html' %}
+
+{% block page_title %}
+    Completed Task Details
+{% endblock page_title %}
+
+{% block main_content %}
+
+{% load static %}
+
+<link href='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/main.min.css' rel='stylesheet' />
+<script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/main.min.js'></script>
+
+<section class="content">
+        <div class="container-fluid">
+
+            <div class="row">
+                <div class="col-md-12">
+                    <!-- general form elements -->
+                    <div class="card card-primary">
+                    <div class="card-header">
+                        <h3 class="card-title">Completed Task Details</h3>
+                    </div>
+                    <!-- /.card-header -->
+                    <!-- form start -->
+                    <form role="form" method="POST" action="">
+                        {% csrf_token %}
+
+                        
+                                {% comment %} Display Messages {% endcomment %}
+                                {% if messages %}
+                                <div class="form-group">
+                                <div class="col-12">
+                                    {% for message in messages %}
+                                    {% if message.tags == "error" %}
+                                        <div class="alert alert-danger alert-dismissible fade show" role="alert" style="margin-top: 10px;">
+                                        {{ message }}
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                        </div>
+                                    {% elif message.tags == "success" %}
+                                        <div class="alert alert-success alert-dismissible fade show" role="alert" style="margin-top: 10px;">
+                                        {{ message }}
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                        </div>
+                                    {% endif %}
+                                    {% endfor %}
+                                </div>
+                                </div>
+                                {% endif %}
+                            
+
+                        <div class="card-body">
+                            {% if  completed_task_obj %}
+                            {% for x in completed_task_obj %}
+                            <div class="form-group">
+                                <label for="name">Task Name</label>
+                                <input type="text" class="form-control" id="task-name" name="task_name" readonly value="{{x.task.task_name}}" >
+                              </div>
+                              <div class="form-group">
+                                <label >Task Description</label>
+                                <textarea type="text" class="form-control" id="task_description" name="task_description" readonly >{{x.task.task_description }}</textarea>
+                              </div>
+                              
+                              <div class="form-group">
+                                <label for="course_duration">Completed By</label>
+                                <input type="text"  class="form-control" readonly value="{{ x.task.assigned_to }}">
+                              </div>
+
+                              <div class="form-group">
+                                <label for="course_duration">Completion Report</label>
+                                <textarea type="text"  class="form-control" readonly >{{x.completion_report}}</textarea>
+                              </div>
+
+                              <div class="form-group">
+                                <label for="course_duration">Worked Hourse</label>
+                                <input type="text"  class="form-control" readonly value="{{ x.worked_hours }}">
+                              </div>
+                               {% endfor %}
+                              {% else %}
+                               <p>No Record Available</p>
+                               {% endif %}
+                              
+                       
+                        </div>
+                
+                    </form>
+                    </div>
+                    <!-- /.card -->
+
+                </div>
+            </div>
+
+        </div><!-- /.container-fluid -->
+      </section>
+{% block custom_js %}
+<script>
+   
+
+
+  </script>
+  
+  
+
+
+{% endblock custom_js %}
+
+{% endblock main_content %}

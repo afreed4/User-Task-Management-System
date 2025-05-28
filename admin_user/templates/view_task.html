@@ -1,0 +1,119 @@
+{% extends 'admin_dash/base_template.html' %}
+
+{% block page_title %}
+    Manage Task
+{% endblock page_title %}
+
+{% block main_content %}
+
+{% load static %}
+
+<section class="content">
+        <div class="container-fluid">
+
+          
+            {% if messages %}
+                                <div class="form-group">
+                                <div class="col-12">
+                                    {% for message in messages %}
+                                    {% if message.tags == "error" %}
+                                        <div class="alert alert-danger alert-dismissible fade show" role="alert" style="margin-top: 10px;">
+                                        {{ message }}
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                        </div>
+                                    {% elif message.tags == "success" %}
+                                        <div class="alert alert-success alert-dismissible fade show" role="alert" style="margin-top: 10px;">
+                                        {{ message }}
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                        </div>
+                                    {% endif %}
+                                    {% endfor %}
+                                </div>
+                                </div>
+                                {% endif %}
+                                
+
+            <div class="row">
+
+                <div class="col-md-12">
+                    <!-- general form elements -->
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">View Task</h3>
+                            <!-- {% if  worker  %}
+                                <span>&emsp; &emsp; &emsp; &emsp; showing result for "{{ worker }}"</span>
+                            {% endif %} -->
+
+                            <div class="card-tools">
+                            </div>
+                        </div>
+                        <!-- /.card-header -->
+                        <div class="card-body table-responsive p-0">
+                            <table class="table table-hover text-nowrap">
+                            <thead>
+                                <tr>
+                                <th>ID</th>
+                               <th>Task Name</th>
+                                <th>Discription</th>
+                                <th>Due Date</th>
+                                <th>Assigned To</th>
+                                <th>Assigned Date</th>
+                             
+                               
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for x in user %}
+                                <tr>
+                                <td>{{ x.id }}</td>
+                                <td>{{ x.task_name }}</td>
+                                
+                                  <td style="white-space: nowrap;">
+                                    {% if x.task_description|length > 23 %}
+                                      {{ x.task_description|slice:":23" }}...
+                                    {% else %}
+                                      {{ x.task_description }}
+                                    {% endif %}
+                                </td>
+                               
+                                <td>{{ x.due_date }}</td>
+                                <td>{{ x.assigned_to.username }}</td>
+                                <td>{{ x.assigned_date }}</td>
+                                <!-- {% if task_status%}
+                                  <td>{{task_status}}</td>
+                                {% else %}
+                                  <td>Not Started</td>
+                                {% endif %} -->
+                                 <td>
+                                        <a href="{% url 'task_details' x.id %}" class="btn btn-success">Details</a>
+                                    </td>
+
+                                 <td>
+                                        <a href="{% url 'fill_user_list_withdata' x.id %}" class="btn btn-info">Edit</a>
+                                    </td>
+
+                                 <td>
+                                        <a href="{% url 'delete_task' x.id %}" class="btn btn-danger">Delete</a>
+                                    </td>
+
+                                </tr>
+                                {% endfor %}
+                                
+                            </tbody>
+                            </table>
+                        </div>
+                        <!-- /.card-body -->
+                        </div>
+                    <!-- /.card -->
+
+                </div>
+            </div>
+
+        </div><!-- /.container-fluid -->
+      </section>
+
+  {% endblock main_content %}

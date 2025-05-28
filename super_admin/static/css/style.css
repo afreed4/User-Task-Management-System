@@ -1,0 +1,186 @@
+
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #3498DB;
+    font-family: "Gadugi";
+}
+h1{
+    font-size: 45px;
+    align-items: center;
+
+
+}
+div .go{
+    font-size: 25px;
+    margin: 20px;
+    text-align: left;
+
+}
+h1:hover{
+    color: #ffffff;
+}
+
+h2 {
+    position: absolute;
+    margin:50px;
+    top:0;
+    right:0;
+    
+}
+.about{
+    position:absolute;
+    top:auto;
+    right:inherit;
+    margin-right: 80px;
+}
+
+.contact{
+    position:absolute;
+    top:auto;
+    right:inherit;
+    margin-right: 5px;
+
+}
+h2:last-child{
+    bottom:0;
+    top:auto;
+}
+
+
+
+.card {
+    text-align: center;
+    /* font-family: "Gadugi"; */
+    border-radius:54px;
+    align-items: left;
+    width: 185px;
+    height: 200px;
+    box-shadow: 25px;
+    margin: 20px;
+
+  }
+
+  .card {
+    transition: transform 0.2s;
+}
+
+/* .card:hover {
+    transform: scale(1.03);
+} */
+.card p.title {
+    font-size: 20px;
+    font-family: "Gadugi";
+}
+
+/* .card:hover p.title {
+    transform: scale(1.1);
+} */
+
+
+.grid-container {
+    display: block;
+    justify-content: space-between;
+    max-width: 900px;
+    margin: 20px;
+    grid-template-columns: auto auto auto;
+    padding: 120px;
+    margin: -25px;
+    height: 60px;
+}
+
+.grid-container {
+    transition: transform 0.3s;
+}
+
+.grid-container:hover {
+    transform: scale(1.05);
+}
+
+
+.grid-item {
+    flex-basis: 48%;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 40px;
+    box-shadow: 0 5px 9px rgba(0, 0, 0, 0.4);
+    text-align: center;
+}
+
+
+
+.grid-item img {
+    width: 100px;
+    height: auto;
+    border-radius: 50px;
+}
+
+.title {
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 10px;
+
+}
+
+button {
+    padding: 8px 16px;
+    background-color: #3498DB;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+button a {
+    text-decoration: none;
+    color: white;
+}
+
+button a::after {
+    color: rgb(6, 189, 235);
+}
+
+a {
+    color: white;
+    font-size:16px;
+    font-family:"Gadugi"
+  
+  }
+
+button:hover {
+    background-color: #45a049;
+}
+
+button:active {
+    background-color: #3e8e41;
+}
+.button-morph {
+    transition: transform 0.3s;
+}
+
+.button-morph:hover {
+    transform: scale(1.1);
+}
+
+.button-morph:active {
+    transform: scale(0.9);
+}
+
+/* Login page */
+
+
+header {
+    position: relative;
+    background-color: #3f51b5;
+    height: 4rem;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.26);
+  }
+  
+  
+  #loginPage {
+    background: lightsalmon;
+  }

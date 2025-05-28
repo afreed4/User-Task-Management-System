@@ -1,0 +1,100 @@
+{% extends 'super_admin_dash/base_template.html' %}
+
+
+{% block page_title %}
+    View Staff Details
+{% endblock page_title %}
+
+{% block main_content %}
+
+{% load static %}
+
+<section class="content">
+        <div class="container-fluid">
+
+            <div class="row">
+                <div class="col-md-12">
+                    <!-- general form elements -->
+                    <div class="card card-primary">
+                    <div class="card-header">
+                        <h3 class="card-title">View Staff Details</h3>
+                    </div>
+                    <!-- /.card-header -->
+                    <!-- form start -->
+                    <form role="form" method="POST" >
+                        {% csrf_token %}
+
+                        
+                                {% comment %} Display Messages {% endcomment %}
+                                {% if messages %}
+                                <div class="form-group">
+                                <div class="col-12">
+                                    {% for message in messages %}
+                                    {% if message.tags == "error" %}
+                                        <div class="alert alert-danger alert-dismissible fade show" role="alert" style="margin-top: 10px;">
+                                        {{ message }}
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                        </div>
+                                    {% elif message.tags == "success" %}
+                                        <div class="alert alert-success alert-dismissible fade show" role="alert" style="margin-top: 10px;">
+                                        {{ message }}
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                        </div>
+                                    {% endif %}
+                                    {% endfor %}
+                                </div>
+                                </div>
+                                {% endif %}
+                            
+
+                      
+                            <div class="card-body">
+                            <div class="form-group">
+                                <label for="name">Full Name</label>
+                                <input type="text" class="form-control" id="full-name" name="full_name" placeholder="Full Name" readonly value="{{user_obj.full_name}}" >
+                              </div>
+                              <div class="form-group">
+                                <label for="course">Address</label>
+                                <textarea type="text" class="form-control" id="address" name="address" placeholder="Address" readonly>{{user_obj.address}}</textarea>
+                              </div>
+                              <div class="form-group">
+                                <label for="course">E mail</label>
+                                <input type="text" class="form-control" id="email" name="email" placeholder="Email" value="{{user_obj.email}}" readonly>
+                              </div>
+                              <div class="form-group">
+                                <label for="course_duration">Username</label>
+                                <input  class="form-control" id="username" name="username" placeholder="Username" readonly value="{{user_obj.username}}">
+                              </div>
+                              <div class="form-group">
+                                <label for="course_duration">Phone Number</label>
+                                <input  class="form-control" id="phone_number" name="phone_number" placeholder="Phone Number" readonly value="{{user_obj.phone_number}}">
+                              </div>
+                              <div class="form-group">
+                                <label for="course_duration">State</label>
+                                <input  class="form-control" id="state" name="state" placeholder="state" readonly value="{{user_obj.state}}">
+                              </div>
+                              <div class="form-group">
+                                <label for="course_duration">District</label>
+                                <input  class="form-control" id="district" name="district" placeholder="District" readonly value="{{user_obj.district}}">
+                              </div>
+                            
+
+
+                        </div>
+                        <!-- /.card-body -->
+
+                       
+                    </form>
+                    </div>
+                    <!-- /.card -->
+
+                </div>
+            </div>
+
+        </div><!-- /.container-fluid -->
+      </section>
+  {% endblock main_content %}

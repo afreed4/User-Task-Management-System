@@ -1,0 +1,52 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   
+    <link rel="stylesheet" href="{% static 'css/styleloog.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+  	<script src="https://kit.fontawesome.com/91e215cfbc.js" crossorigin="anonymous"></script> 
+
+    <title>Admin login | User Task Manager</title>
+
+</head>
+
+<body>  
+<div class="circles">
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+    <p class="home"><span>֎</span><a href="/">Home</a></p>    
+      <div class="main">
+        <p class="wish" align="center">Welcome Admin</p>
+        <p class="sign" align="center">Login</p>
+      <form method="POST" class="form1" >
+          {% csrf_token %}
+        <input class="user" name="username" type="text" align="center" placeholder="Username" required >
+        <input class="pass" name="password" type="password" align="center" placeholder="Password">
+        <button type="submit"  class="btn btn-primary">Log in</button>
+                {% for message in messages %}
+                  <h5>{{message}}</h5>
+                {% endfor %}                                
+        </form>
+  </div>
+</div>
+    </div>
+  </div >
+\</div>
+    
+</body>
+</html>
+

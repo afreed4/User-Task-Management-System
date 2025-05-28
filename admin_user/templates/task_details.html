@@ -1,0 +1,129 @@
+{% extends 'admin_dash/base_template.html' %}
+
+{% block page_title %}
+    View Task Details
+{% endblock page_title %}
+
+{% block main_content %}
+
+{% load static %}
+
+<section class="content">
+        <div class="container-fluid">
+
+            <div class="row">
+                <div class="col-md-12">
+                    <!-- general form elements -->
+                    <div class="card card-primary">
+                    <div class="card-header">
+                        <h3 class="card-title">View Task Details</h3>
+                    </div>
+                    <!-- /.card-header -->
+                    <!-- form start -->
+                    <form role="form" method="POST" >
+                        {% csrf_token %}
+
+                        
+                                {% comment %} Display Messages {% endcomment %}
+                                {% if messages %}
+                                <div class="form-group">
+                                <div class="col-12">
+                                    {% for message in messages %}
+                                    {% if message.tags == "error" %}
+                                        <div class="alert alert-danger alert-dismissible fade show" role="alert" style="margin-top: 10px;">
+                                        {{ message }}
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                        </div>
+                                    {% elif message.tags == "success" %}
+                                        <div class="alert alert-success alert-dismissible fade show" role="alert" style="margin-top: 10px;">
+                                        {{ message }}
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                        </div>
+                                    {% endif %}
+                                    {% endfor %}
+                                </div>
+                                </div>
+                                {% endif %}
+                            
+
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label>Task ID</label>
+                                <input type="text" class="form-control"  value="{{ task.id }}" readonly>
+                            </div>
+                            <div class="form-group">
+                                <label>Task Name</label>
+                                <input type="text"  class="form-control"  value="{{ task.task_name }}" disabled="true">
+                            </div>
+
+                            <div class="form-group">
+                                <label>Assigned To</label>
+                                <input type="text" class="form-control"  value="{{ task.assigned_to }}" disabled="true">
+                            </div>
+
+                             <div class="form-group">
+                                <label>Task Discription</label>
+                                <textarea class="form-control" readonly >{{ task.task_description }}</textarea>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Due Date</label>
+                                <input type="text" class="form-control"  value="{{ task.due_date }}" disabled="true">
+                            </div>
+
+                            <div class="form-group">
+                                <label>Assigned Date</label>
+                                <input  class="form-control"  value="{{ task.assigned_date }}" disabled="true"> 
+                            </div>
+                            
+                            
+                            <div class="form-group">
+                                <label>Task Status</label>
+                               {% if task_response %}
+                                   
+                                    <input type="text" class="form-control" value="{{ task_response.task_status }}" readonly>
+                                {% else %}
+                                <input type="text" class="form-control" value=" No Status available." readonly> 
+                                {% endif %}
+
+                            </div>
+
+                            <div class="form-group">
+                                <label>Completion Report</label>
+                                {% if task_response.completion_report %}
+                                  <textarea class="form-control" readonly>{{ task_response.completion_report }}</textarea>
+                                {% else %}
+                                  <textarea class="form-control" readonly>No report available.</textarea>
+                                {% endif %}
+                                
+                            </div>
+
+                            <div class="form-group">
+                                <label>Worked Hours</label>
+                                {% if task_response.worked_hours %}
+                                  <textarea class="form-control" readonly>{{ task_response.worked_hours }}</textarea>
+                                {% else %}
+                                 <textarea class="form-control" readonly>No data available.</textarea>
+                                 {% endif %}
+                            </div>
+                            
+
+
+                        </div>
+                        <!-- /.card-body -->
+
+                       
+                    </form>
+                    </div>
+                    <!-- /.card -->
+
+                </div>
+            </div>
+
+        </div><!-- /.container-fluid -->
+      </section>
+  {% endblock main_content %}

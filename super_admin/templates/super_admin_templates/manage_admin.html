@@ -1,0 +1,112 @@
+{% extends 'super_admin_dash/base_template.html' %}
+
+{% block page_title %}
+    Manage Admin staff
+{% endblock page_title %}
+
+{% block main_content %}
+
+{% load static %}
+
+<section class="content">
+        <div class="container-fluid">
+
+           
+
+            {% if messages %}
+                                <div class="form-group">
+                                <div class="col-12">
+                                    {% for message in messages %}
+                                    {% if message.tags == "error" %}
+                                        <div class="alert alert-danger alert-dismissible fade show" role="alert" style="margin-top: 10px;">
+                                        {{ message }}
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                        </div>
+                                    {% elif message.tags == "success" %}
+                                        <div class="alert alert-success alert-dismissible fade show" role="alert" style="margin-top: 10px;">
+                                        {{ message }}
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                        </div>
+                                    {% endif %}
+                                    {% endfor %}
+                                </div>
+                                </div>
+                                {% endif %}
+                                
+
+            <div class="row">
+
+                <div class="col-md-12">
+                    <!-- general form elements -->
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Manage Admin Staff</h3>
+                            <!-- {% if  worker  %}
+                                <span>&emsp; &emsp; &emsp; &emsp; showing result for "{{ worker }}"</span>
+                            {% endif %} -->
+
+                            <div class="card-tools">
+                            </div>
+                        </div>
+                        <!-- /.card-header -->
+                        <div class="card-body table-responsive p-0">
+                            <table class="table table-hover text-nowrap">
+                            <thead>
+                                <tr>
+                                <th>ID</th>
+                               <th>Full Name</th>
+                                <th>Username</th>
+                                <th>Address</th>
+                                <th>Email</th>
+                                <th>Contact Number</th>
+                                <th>District</th>
+                                <th>State</th>
+                               
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for x in users_list %}
+                                <tr>
+                                <td>{{ x.id }}</td>
+                                <td>{{ x.full_name }}</td>
+                                <td>{{ x.username }}</td>
+                               
+                                 <td style="white-space: nowrap;">
+                                    {% if x.address|length > 23 %}
+                                      {{ x.address|slice:":23" }}...
+                                    {% else %}
+                                      {{ x.address }}
+                                    {% endif %}
+                                </td>
+                                <td>{{ x.email }}</td>
+                                <td>{{ x.phone_number }}</td>
+                                <td>{{ x.district }}</td>
+                                <td>{{ x.state }}</td>
+
+                                 <td>
+                                    <a href="{% url 'edit_staff' x.id %}" class="btn btn-success">Edit</a> 
+                                    <a href="{% url 'delete_user' x.id %}" class="btn btn-danger">Delete</a>
+                                    <a href="{% url 'view_user' x.id %}" class="btn btn-info">View</a>
+                                </td>
+                              
+                                </tr>
+                                {% endfor %}
+                                
+                            </tbody>
+                            </table>
+                        </div>
+                        <!-- /.card-body -->
+                        </div>
+                    <!-- /.card -->
+
+                </div>
+            </div>
+
+        </div><!-- /.container-fluid -->
+      </section>
+
+  {% endblock main_content %}

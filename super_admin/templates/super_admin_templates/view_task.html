@@ -1,0 +1,122 @@
+{% extends 'super_admin_dash/base_template.html' %}
+
+
+{% block page_title %}
+    View Task Details
+{% endblock page_title %}
+
+{% block main_content %}
+
+{% load static %}
+
+<section class="content">
+        <div class="container-fluid">
+
+            <div class="row">
+                <div class="col-md-12">
+                    <!-- general form elements -->
+                    <div class="card card-primary">
+                    <div class="card-header">
+                        <h3 class="card-title">View Task Details</h3>
+                    </div>
+                    <!-- /.card-header -->
+                    <!-- form start -->
+                    <form role="form" method="POST" >
+                        {% csrf_token %}
+
+                        
+                                {% comment %} Display Messages {% endcomment %}
+                                {% if messages %}
+                                <div class="form-group">
+                                <div class="col-12">
+                                    {% for message in messages %}
+                                    {% if message.tags == "error" %}
+                                        <div class="alert alert-danger alert-dismissible fade show" role="alert" style="margin-top: 10px;">
+                                        {{ message }}
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                        </div>
+                                    {% elif message.tags == "success" %}
+                                        <div class="alert alert-success alert-dismissible fade show" role="alert" style="margin-top: 10px;">
+                                        {{ message }}
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                        </div>
+                                    {% endif %}
+                                    {% endfor %}
+                                </div>
+                                </div>
+                                {% endif %}
+                            
+
+                          {% for x in data_list %}
+                            <div class="card-body">
+                            <div class="form-group">
+                                <label for="name">Task Name</label>
+                                <input type="text" class="form-control" id="full-name" name="task_name" placeholder="Task Name" readonly value="{{x.task_name}}" >
+                              </div>
+                              <div class="form-group">
+                                <label for="course">Task Description</label>
+                                <textarea type="text" class="form-control" id="description" name="description" placeholder="Task Description" readonly>{{x.task_description}}</textarea>
+                              </div>
+                              <div class="form-group">
+                                <label for="course">Assigned To</label>
+                                <input type="text" class="form-control" id="assigned_to" name="assigned_to" placeholder="Task Assigned To" value="{{x.assigned_to}}" readonly>
+                              </div>
+                              <div class="form-group">
+                                <label for="course_duration">Assigned By</label>
+                                <input  class="form-control" id="assigned_by" name="assigned_by" placeholder="Task Assigned By" readonly value="{{x.assigned_by}}">
+                              </div>
+                              <div class="form-group">
+                                <label for="course_duration">Due Date</label>
+                                <input  class="form-control" id="due_date" name="due_date" placeholder="Due Date" readonly value="{{x.due_date}}">
+                              </div>
+                              <div class="form-group">
+                                <label for="course_duration">Assigned Date</label>
+                                <input  class="form-control" id="assigned_date" name="assigned_date" placeholder="Assigned Date" readonly value="{{x.assigned_date}}">
+                              </div>
+                              <div class="form-group">
+                                <label for="course_duration">Task Status</label>
+                                 {% if x.task_status == "in_progress" or x.task_status == "In Progress"  %}
+                                    <input id="task_status" name="task_status" placeholder="Task Status" readonly class="bg-primary form-control" style=" height: 30px; width: 190px; border: 1px solid #f5eceb; border-radius: 10px;padding: 3px; color: white; font-weight: 900; display: flex; justify-items: center; align-items: center;" value=" {{ x.task_status }}">
+                                   
+                                    
+                                    {% elif x.task_status == "completed" or x.task_status == "Completed" %}
+                                    <input id="task_status" name="task_status" placeholder="Task Status" readonly class="bg-success form-control" style=" height: 30px; width: 190px; border: 1px solid #f5eceb; border-radius: 10px;padding: 3px; color: white; font-weight: 900; display: flex; justify-items: center; align-items: center;" value=" {{ x.task_status }}">
+                                    {{ x.task_status }}
+                                    
+                                    {% elif x.task_status == "not_started" or x.task_status == "Not Started" %}
+                                    <input id="task_status" name="task_status" placeholder="Task Status" readonly class="bg-warning form-control" style=" height: 30px; width: 190px; border: 1px solid #f5eceb; border-radius: 10px;padding: 3px; color: white; font-weight: 900; display: flex; justify-items: center; align-items: center;" value=" {{ x.task_status }}">
+                                  
+                                    
+                                    {% endif %}
+                            
+                              </div>
+                              <div class="form-group">
+                                <label for="course_duration">Completion Report</label>
+                                <textarea  class="form-control" id="completion_report" name="completion_report" placeholder="Completion Report" readonly>{{x.completion_report}}</textarea>
+                              </div>
+                              <div class="form-group">
+                                <label for="course_duration">Worked Hours</label>
+                                <input  class="form-control" id="worked_hours" name="worked_hours" placeholder="Worked Hours" readonly value="{{x.worked_hours}}">
+                              </div>
+                            
+
+
+                        </div>
+                        {% endfor %}
+                        <!-- /.card-body -->
+
+                       
+                    </form>
+                    </div>
+                    <!-- /.card -->
+
+                </div>
+            </div>
+
+        </div><!-- /.container-fluid -->
+      </section>
+  {% endblock main_content %}

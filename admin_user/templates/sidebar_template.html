@@ -1,0 +1,77 @@
+{% load static %}
+
+<aside class="main-sidebar sidebar-light-caution elevation-4">
+    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+      <!-- Brand Logo -->
+      <a class="brand-link">
+    
+        <span class="brand-text font-weight-light">User Task Management</span>
+      </a>
+      <!-- Sidebar -->
+      <div class="sidebar">
+        <!-- Sidebar user panel (optional) -->
+        <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+          <div class="image">
+            <img src="{% static 'dist/img/user2-160x160.jpg' %}" class="img-circle elevation-2" alt="User Image">
+               <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+          </div>
+          <div class="info">
+            <a class="d-block">{{ request.user.username }} </a>
+          </div>
+        </div>
+
+        <!-- Sidebar Menu -->
+        <nav class="mt-2">
+          <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+            <!-- Add icons to the links using the .nav-icon class
+                with font-awesome or any other icon font library -->
+
+            <li class="nav-item">
+             
+              <a  class="nav-link" href="{% url 'admin_dashboard' %}">
+                <i class="nav-icon fa-solid fa-house-user"></i>
+                <p>
+                  View Staff
+                </p>
+              </a>
+            </li>
+            <li class="nav-item">
+            
+              <a class="nav-link" href="{% url 'fill_user_name' %}">
+                <i class="nav-icon fa-solid fa-file-circle-plus"></i>
+                <p>
+                  Create Task
+                </p>
+              </a>
+            </li>
+
+          
+
+            <li class="nav-item">
+              
+              <a  class="nav-link" href="{% url 'view_task' %}">
+                <i class="fa fa-server" style="font-size:22px;margin: 5px"></i>
+                <p>
+                  View Task
+                </p>
+              </a>
+            </li>
+
+            <li class="nav-item">
+              
+              <a  class="nav-link" href="{% url 'admin_fetch_completed_task' %}">
+                <i class="fas fa-tasks" style='font-size:22px;margin: 5px'></i>
+                <p>
+                  Completed Task
+                </p>
+              </a>
+            </li>
+
+         
+
+          </ul>
+        </nav>
+        <!-- /.sidebar-menu -->
+      </div>
+      <!-- /.sidebar -->
+    </aside>

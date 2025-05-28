@@ -1,0 +1,140 @@
+{% extends 'super_admin_dash/base_template.html' %}
+
+{% block page_title %}
+    Edit Task Details
+{% endblock page_title %}
+
+{% block main_content %}
+
+{% load static %}
+
+<link href='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/main.min.css' rel='stylesheet' />
+<script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/main.min.js'></script>
+
+<section class="content">
+        <div class="container-fluid">
+
+            <div class="row">
+                <div class="col-md-12">
+                    <!-- general form elements -->
+                    <div class="card card-primary">
+                    <div class="card-header">
+                        <h3 class="card-title">Edit Task Details</h3>
+                    </div>
+                    <!-- /.card-header -->
+                    <!-- form start -->
+                    <form role="form" method="POST" action="{% url 'edit_task' task_id=task_obj.id %}">
+                        {% csrf_token %}
+
+                        
+                                {% comment %} Display Messages {% endcomment %}
+                                {% if messages %}
+                                <div class="form-group">
+                                <div class="col-12">
+                                    {% for message in messages %}
+                                    {% if message.tags == "error" %}
+                                        <div class="alert alert-danger alert-dismissible fade show" role="alert" style="margin-top: 10px;">
+                                        {{ message }}
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                        </div>
+                                    {% elif message.tags == "success" %}
+                                        <div class="alert alert-success alert-dismissible fade show" role="alert" style="margin-top: 10px;">
+                                        {{ message }}
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                        </div>
+                                    {% endif %}
+                                    {% endfor %}
+                                </div>
+                                </div>
+                                {% endif %}
+                            
+
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label for="name">Task Name</label>
+                                <input type="text" class="form-control" id="task-name" name="task_name" placeholder="Full Name" value="{{task_obj.task_name}}" >
+                              </div>
+                              <div class="form-group">
+                                <label >Task Description</label>
+                                <textarea type="text" class="form-control" id="task_description" name="task_description" placeholder="Task Description" >{{task_obj.task_description }}</textarea>
+                              </div>
+                              
+                              <div class="form-group">
+                                <label for="course_duration">Due Date</label>
+                                <input type="date" name="due_date" value="{{ task_obj.due_date|date:'Y-m-d' }}">
+                              </div>
+                              
+                              <div class="form-group">
+                             <label >Change Assighner</label>
+                               <select id="admin-select" class="form-control" name="admin-select">
+                                                            <option value="{{user_obj.state.name}}">{{task_obj.aassigned_by.username}}</option>
+                                                            {% for x in all_admins %}
+                                                                <option value="{{ x.id }}">{{ x.username }}</option>
+                                                            {% endfor %}
+                                                            </select>
+                                </div>
+
+                              <div class="form-group">
+                                <label >Change Assignee</label>
+                               <select id="users-select" class="form-control" name="users-select">
+                                 <option value="{{task_obj.assigned_to.id}}"></option>
+                               </select>
+                              </div>
+                             
+                            
+                              
+                        </div>
+                      
+
+                        <div class="card-footer">
+                        <button type="submit" class="btn btn-primary">Update</button>
+                        </div>
+                    </form>
+                    </div>
+                    <!-- /.card -->
+
+                </div>
+            </div>
+
+        </div><!-- /.container-fluid -->
+      </section>
+{% block custom_js %}
+<script>
+   
+
+
+  </script>
+  
+  
+
+
+{% endblock custom_js %}
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+  $('#admin-select').change(function() {
+    const adminId = $(this).val();
+
+    $.ajax({
+      url: "{% url 'get_users_of_each_admin' %}",
+      data: { admin_id: adminId },
+      success: function(data) {
+        const userSelect = $('#users-select');
+        userSelect.empty();
+        userSelect.append('<option value="">Change User</option>');
+        data.forEach(d => {
+          
+          userSelect.append(`<option value="${d.worker__id}">${d.worker__username}</option>`);
+        });
+      }
+    });
+  });
+</script>
+
+
+
+  {% endblock main_content %}

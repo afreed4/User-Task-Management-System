@@ -1,0 +1,123 @@
+{% extends 'super_admin_dash/base_template.html' %}
+
+{% block page_title %}
+    Manage Task
+{% endblock page_title %}
+
+{% block main_content %}
+
+{% load static %}
+
+<section class="content">
+        <div class="container-fluid">
+
+           
+
+            {% if messages %}
+                                <div class="form-group">
+                                <div class="col-12">
+                                    {% for message in messages %}
+                                    {% if message.tags == "error" %}
+                                        <div class="alert alert-danger alert-dismissible fade show" role="alert" style="margin-top: 10px;">
+                                        {{ message }}
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                        </div>
+                                    {% elif message.tags == "success" %}
+                                        <div class="alert alert-success alert-dismissible fade show" role="alert" style="margin-top: 10px;">
+                                        {{ message }}
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                        </div>
+                                    {% endif %}
+                                    {% endfor %}
+                                </div>
+                                </div>
+                                {% endif %}
+                                
+
+            <div class="row">
+
+                <div class="col-md-12">
+                    <!-- general form elements -->
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Manage Task</h3>
+                            <!-- {% if  worker  %}
+                                <span>&emsp; &emsp; &emsp; &emsp; showing result for "{{ worker }}"</span>
+                            {% endif %} -->
+
+                            <div class="card-tools">
+                            </div>
+                        </div>
+                        <!-- /.card-header -->
+                        <div class="card-body table-responsive p-0">
+                            <table class="table table-hover text-nowrap">
+                            <thead>
+                                <tr>
+                                <th>Task Name</th>
+                               <!-- <th>Assigned By</th>
+                                <th>Assigned To</th>
+                                <th>Task Description</th> -->
+                                <th>Due Date</th>
+                                <th>Assigned Date</th>
+                                <th>Status</th>
+                                <th>Completion Rport</th>
+                                <th>Worked Hours</th>
+                                <th>Assigned To</th>
+                               
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for x in data_list %}
+                                <tr>
+                                <td>{{ x.task_name }}</td>
+                                <!-- <td>{{ x.assigned_by }}</td>
+                                <td>{{ x.assigned_to }}</td>
+                                <td>{{ x.task_description }}</td> -->
+                                <td>{{ x.due_date }}</td>
+                                <td>{{ x.assigned_date }}</td>
+                                <td>
+                                    {% if x.task_status == "in_progress" or x.task_status == "In Progress"  %}
+                                    <div class="bg-primary" style=" height: 30px; width: 90px; border: 1px solid #f5eceb; border-radius: 10px;padding: 3px; color: white; font-weight: 900;">
+                                    {{ x.task_status }}
+                                    </div>
+                                    {% elif x.task_status == "completed" or x.task_status == "Completed" %}
+                                    <div class="bg-success" style=" height: 30px; width: 90px; border: 1px solid #f5eceb; border-radius: 10px;padding: 3px; color: white; font-weight: 900;">
+                                    {{ x.task_status }}
+                                    </div>
+                                    {% elif x.task_status == "not_started" or x.task_status == "Not Started" %}
+                                    <div class="bg-warning" style=" height: 30px; width: 90px; border: 1px solid #f5eceb; border-radius: 10px;padding: 3px; color: white; font-weight: 900;">
+                                    {{ x.task_status }} 
+                                    </div>
+                                    {% endif %}
+                                </td>
+                               <td>{{ x.completion_report }}</td>
+
+                                <td>{{ x.worked_hours }}</td>
+                                <td>{{ x.assigned_to }}</td>
+                                <td>
+                                    <a href="{% url 'edit_task' task_id=x.task_id %}" class="btn btn-success">Edit</a> 
+                                    <a href="{% url 'delete_task' task_id=x.task_id %}" class="btn btn-danger">Delete</a>
+                                    <a href="{% url 'view_task_details' task_id=x.task_id %}" class="btn btn-info">View</a>
+                                </td>
+                              
+                                </tr>
+                                {% endfor %}
+                                
+                            </tbody>
+                            </table>
+                        </div>
+                        <!-- /.card-body -->
+                        </div>
+                    <!-- /.card -->
+
+                </div>
+            </div>
+
+        </div><!-- /.container-fluid -->
+      </section>
+
+  {% endblock main_content %}

@@ -1,0 +1,335 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600&display=swap');
+*{
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif; 
+}
+.container{
+    max-width: 1200px;
+    width: 150%;
+    height: 100vh;
+    padding-left: 10%;
+    padding-right: 10%;
+    /* box-sizing: border-box; */
+    overflow: hidden;
+}
+.navbar{
+    display: flex;
+    align-items: center;
+
+}
+.navbar a{
+  font-size: 50px;
+  text-decoration: none;
+  border: none;
+}
+nav{
+    flex: 1;
+    text-align: right;
+}
+
+.logo{
+    width:100px;
+    height: auto;
+    cursor: pointer;
+    margin: 30px 0px;
+
+}
+.row{
+
+    display: block;
+    align-items: center;
+
+}
+.col-1{
+    flex-basis: 40%;
+    position: relative;
+    /* border: 1px red solid; */
+    width: 50%;
+
+}
+.col-1:after{
+    content:"";
+    width: 8px;
+    height:95px;
+    background-color: teal;
+    position: absolute;
+    left: -25px;
+    top:13px;
+}
+
+.col-1 h2{
+    font-size: 50px;
+    font-weight: 500;   
+    /* align-items: center; */
+    /* text-align: center; */
+    /* justify-content: center; */
+}
+.col-1 span {
+  color:#11998e;
+}
+
+.col-1 h4{
+    
+    font-size: 20px;
+    font-weight: 300;
+    display:block;
+}
+.col-1 i{
+  color:rgb(15, 178, 178)
+}
+.col-2{
+    /* display: flex; */
+    flex-basis: 60%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    background:teal;
+    height: 100%;
+    width: 100%;
+    clip-path: circle(600px at left  1000px);
+
+}
+.col-3{
+  /* display: flex; */
+    flex-basis: 60%;
+    /* position: absolute; */
+    right : 0;
+    top: 0;
+    background:rgb(243, 178, 0);
+    height: 100%;
+    width: 100%;
+    clip-path: circle();
+
+}
+
+.card {
+    justify-content: center;
+    margin-top:-13%;
+    margin-left:65%;
+    width: 340px;
+    height: 680px;
+    border-radius: 30px;
+    background: #fcfcfc;
+    box-shadow: 15px 15px 30px #bebebe,
+               -15px -15px 30px #cfcfcf;
+  }
+/* ******************************************************** */
+  .card button{
+    width: 140px;
+    border: 0;
+    padding: 10px ;
+    color: rgb(255, 255, 255);
+    background-color: #12bdaf;
+    transition: transform(0.4s);
+  }
+  .card button{
+    margin: 50px;
+    padding-left: 10px;
+    border-radius: 20px;
+  }
+  
+  .app-form-group .field{
+    margin-top: 5px;
+  }
+  .card button:active{
+    color: #ffffff;
+    transform: scale(0.95);
+    background-color: #1bd0c1;
+  }
+
+.form__group {
+  position: relative;
+  padding: 25px 0 0;
+  /* margin-top: 10px; */
+  width: 50%;
+}
+
+.form__field {
+  margin-top: -10px;
+  width: 185%;
+  border: 0;
+  border-bottom: 2px solid gray;
+  outline: 0;
+  font-size: 1.3rem;
+  color: rgb(15, 15, 15);
+  padding: 7px 0;
+  background: transparent;
+  transition: border-color 0.2s;
+}
+
+
+  .form__field::placeholder {
+    color: transparent;
+  }
+
+  .form__field:placeholder-shown ~ .form__label {
+    font-size: 1.3rem;
+    top: 10px;
+  }
+
+.form__label {
+  position: absolute;
+  top: 0;
+  transition: 0.2s;
+  font-size:12px;
+  color: rgb(8, 189, 189);
+}
+
+.form__field:focus
+  ~ .form__label {
+    top: 0;
+    display: flex;
+    transition: 0.2s;
+    font-size: 1rem;
+    color: #11998e;  
+  padding-bottom: 8px;  
+  font-weight: 700;
+  border-width: 3px;
+  border-image: linear-gradient(to right, #11998e,#11998e);
+  /* border-image-slice: 1; */
+}
+.form__field
+  .form__field:required .form__field:invalid { box-shadow:none; }
+
+
+
+                                                  /* SOCIAL MEIDAS IN CIRCLE */
+  .sms{
+    position: absolute;
+    top: 70%;
+    left: -20px;
+    padding: 25px;
+    transform: translateY(-80px);
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    /* border: 1px solid rgb(255, 255, 255)   ; */
+    border-radius: 20px;
+
+  }
+  .sms li{
+    list-style: none;
+    padding: 30%;
+    transition: transform(0.9s);
+
+  }
+  .sms li:hover{
+    transform: translateX(10px);
+  }
+  .sms li a{
+    display: inline-block;
+    margin: 5px 0;
+    font-size: 28px;
+    /* filter: invert(1); */
+    color:  rgb(244, 244, 244);
+  }
+
+
+/* input columns* inner*/
+.inner{
+  padding: 50px;
+}
+/* social medias ends here */
+
+
+
+                                                    /* MEDIA QUERIES */
+@media (max-width: 768px) {
+  .container {
+    max-height: 915px;
+    max-width: 768px;
+    padding: 20px 0px;
+    /* max-height: 800px; */
+    overflow: visible;
+  }
+  
+  .navbar {
+    align-items:center;
+  }
+  .logo{
+    margin-top: 15px;
+  }
+  
+  
+  .col-1{
+    margin-left: 30%;
+    width: 50%;
+    /* height: 100%; */
+    text-align: center;
+  }
+  .col-1:after{
+    top:-5px;
+    background-color: rgb(23, 182, 182);
+
+}
+  .col-1 h2{
+    margin-top: 10px;
+    font-size: 25px;
+  }
+  .col-1 h4{
+  font-size:medium;
+  font-weight: 300;
+
+  }
+  .card{
+    margin-left: 23%;
+    margin-top:10%;
+    align-items: center;
+  }
+
+  
+  .col-2 {
+    display: flex;
+    top: 55%;
+    background:teal;
+    height: 108%;
+    width: 160%;
+    clip-path: circle(540px at left 1000px);
+  }
+  
+  
+  .sms {
+    bottom: 2%;
+    /* left:40%; */
+    /* border: 1px solid red; */
+    display: flex;
+    align-items: center;
+
+  }
+  .sms li a{
+    color: rgb(255, 255, 255);
+    flex-direction: column;
+
+  }
+}
+
+/* Styles for mobile screens */
+@media (max-width: 480px) {
+  .card {
+    flex-direction: column;
+  }
+  
+  .app-form-group {
+    margin-bottom: 1px;
+  }
+  
+  .buttons {
+    text-align: center;
+  }
+  
+  /* .sms {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .sms li {
+    margin-right: 0;
+    margin-bottom: 10px;
+  } */
+}
+
+
+/* BUTTONS */
+

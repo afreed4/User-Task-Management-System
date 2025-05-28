@@ -1,0 +1,183 @@
+@import url('https://fonts.googleapis.com/css2?family=Parisienne&family=Sacramento&family=Splash&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100;200;300;400;500&display=swap');
+body {
+   background: linear-gradient(50deg, #ee9ca7,#ff6e7f, #bfe9ff, #a7bfe9, #6190e9);
+   /* background: linear-gradient(-25deg,); */
+  font-family: 'Ubuntu', sans-serif;
+  background-size: 400% 400%;
+	animation: gradient 20s ease infinite;
+
+
+}
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+
+.main {
+  background-color: #ffffff;
+  width: 450px;
+  height: 450px;
+  margin: 5em auto;
+  border-radius: 1.5em;
+  box-shadow: 0px 11px 35px 20px rgba(36, 36, 36, 0.14);
+}
+
+.sign {
+  padding-top: -10px;
+  align-items: center;
+  padding-right: 25px;
+  color: #ee9ca7;
+  font-family: 'Ubuntu', sans-serif;
+  font-weight: bold;
+  font-size: 23px;
+}
+.wish{
+  padding-top:40px;
+  color: #ee9ca7;
+  background: linear-gradient(45deg, #FFB800, #FF4D00);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-family: 'Sacramento', cursive;
+  font-weight: bold;
+  font-size: 39px;
+
+}
+.warm{
+  font-size: 40px;
+  font-weight: bold;
+  background: linear-gradient(45deg, #FFB800, #FF4D00);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  padding-top:5px;
+  color: #ee9ca7;
+  font-family: 'Sacramento', cursive;
+  font-weight: bold;
+  font-size: 39px;
+
+}
+
+
+.user {
+width: 75%;
+color: rgb(38, 50, 56);
+font-weight: 700;
+font-size: 14px;
+letter-spacing: 1px;
+background: rgba(136, 126, 126, 0.04);
+padding: 10px 20px;
+border: none;
+border-radius: 20px;
+outline: none;
+box-sizing: border-box;
+border: 2px solid rgba(0, 0, 0, 0.02);
+margin-bottom: 50px;
+margin-left: 46px;
+text-align: center;
+margin-bottom: 27px;
+font-family: 'Ubuntu', sans-serif;
+}
+
+
+h5{
+  display: flex;
+  padding: 80px;
+  color: #ffffffb0;
+  font-family: 'Outfit', sans-serif;
+  text-align: center;
+  font-weight: 400;
+  font-size: 28px;
+  text-shadow: 15px 10px 20px rgb(84, 83, 83);
+}
+
+form.form1 {
+  padding-top: 20px;
+}
+
+.form2{
+  padding-top: -10px;
+
+}
+button{
+  padding: top 20px;
+  cursor: pointer;
+  border-radius: 5em;
+  color: #fff;
+  background: #6190e8;
+  border: 0;
+  padding-left: 40px;
+  padding-right: 40px;
+  padding-bottom: 10px;
+  padding-top: 10px;
+  font-family: 'Ubuntu', sans-serif;
+  margin-left: 35%;
+  font-size: 13px;
+  box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
+}
+
+
+
+.pass {
+      width: 75%;
+color: rgb(38, 50, 56);
+font-weight: 700;
+font-size: 14px;
+letter-spacing: 1px;
+background: rgba(136, 126, 126, 0.04);
+padding: 10px 20px;
+border: none;
+border-radius: 20px;
+outline: none;
+box-sizing: border-box;
+border: 2px solid rgba(0, 0, 0, 0.02);
+margin-bottom: 50px;
+margin-left: 46px;
+text-align: center;
+margin-bottom: 27px;
+font-family: 'Ubuntu', sans-serif;
+
+}
+
+
+.user:focus, .pass:focus {
+  border: 2px solid rgba(0, 0, 0, 0.18) !important;
+  
+}
+
+.home {
+    margin-top: 2px;
+    display: flex;
+    justify-content: center ;
+    /* border: 1px red solid; */
+    width: 6em;
+    border-radius: 30px;
+}
+.home a{
+  text-decoration: none;
+  color: white;
+  font-size: 20px;
+  margin-top: 9px;
+  margin-left: 5px;
+
+}
+span{
+  color:rgb(25, 187, 187);
+  font-size: 30px;
+  transition: transform 0.6s;;
+  
+}
+span:hover{
+  /* transform: scale(0.9); */
+  transform: rotate(-50deg);
+  color:#04abfe;
+
+}
