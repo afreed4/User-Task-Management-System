@@ -5,8 +5,9 @@ A Django-based web application and RESTful API to manage users, assign tasks, an
 ## 🚀 Features
 
 - 🔐 **User Registration and Login**
+- Super Admin has full controll over Users and Admins
 - 👥 **Role-Based Access** (Super Admin, Admin, User)
-- 📝 **Task Creation and Assignment** by Admins
+- 📝 **Task Creation and Assignment** by Admins and Super Admins
 - ⬆️⬇️ **Admin Promotion and Demotion** by Super Admins
 - 📊 **Task Status Tracking** (Pending, In Progress, Completed)
 - 📋 **Dashboard** for task/user management (Admin & Super Admin)
