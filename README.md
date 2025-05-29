@@ -17,6 +17,8 @@ A Django-based web application and RESTful API to manage users, assign tasks, an
 - 📱 **Responsive Design** for mobile and desktop
 - 🔑 **JWT Token Generation** on user login
 - 🌐 **REST API for Users' Activity** (with secured endpoints)
+- 
+- Create A Superuser using django's bult in createsuper command, use the same superuser credentials to login as a Superuser and access the superuser dashboard
 
 ## 🛠 Tech Stack
 
